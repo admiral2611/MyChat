@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "303352224037",
+    "firebase_url": "https://chatapp1-b6842-default-rtdb.firebaseio.com",
+    "project_id": "chatapp1-b6842",
+    "storage_bucket": "chatapp1-b6842.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303352224037:android:2e2a6da75cc26f4447a2cc",
+        "android_client_info": {
+          "package_name": "com.admiral26.mychat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUoS7kD-gtIgL6rOb0d22xp3KxbRyTMwk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
