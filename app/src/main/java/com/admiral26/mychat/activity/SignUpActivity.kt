@@ -35,10 +35,11 @@ import java.io.FileNotFoundException
 class SignUpActivity : AppCompatActivity() {
     private val binding by lazy { ActivitySignUpBinding.inflate(layoutInflater) }
     private var enCodedImage: String = ""
-    private lateinit var preferenceManager: PreferenceManager
+    private var preferenceManager: PreferenceManager? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        preferenceManager = PreferenceManager(applicationContext)
         setListeners()
 
     }
@@ -55,10 +56,10 @@ class SignUpActivity : AppCompatActivity() {
             .add(user)
             .addOnSuccessListener { documentReference ->
                 showProgress(false)
-                preferenceManager.putBoolean(KEY_IS_SIGNED_IN, true)
-                preferenceManager.putString(KEY_USER_ID, documentReference.id)
-                preferenceManager.putString(KEY_NAME, binding.inputName.text.toString())
-                preferenceManager.putString(KEY_IMAGE, enCodedImage)
+                preferenceManager?.putBoolean(KEY_IS_SIGNED_IN, true)
+                preferenceManager?.putString(KEY_USER_ID, documentReference.id)
+                preferenceManager?.putString(KEY_NAME, binding.inputName.text.toString())
+                preferenceManager?.putString(KEY_IMAGE, enCodedImage)
                 val intentMy = Intent(applicationContext, MainActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 startActivity(intentMy)

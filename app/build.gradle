@@ -53,12 +53,13 @@ dependencies {
 
     // Import the Firebase BoM
     implementation platform(libs.firebase.bom)
-    implementation libs.firebase.analytics
+    implementation(platform(libs.firebase.bom))
 
     //rounded image
     implementation libs.roundedimageview
 
     //multi dex
     implementation(libs.androidx.multidex)
+
 
 }
