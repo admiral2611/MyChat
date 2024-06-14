@@ -1,5 +1,6 @@
 package com.admiral26.mychat.adapter
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -13,9 +14,18 @@ class MultiAdapter(
     private val receiverProfileImage: Bitmap? = null,
     private val listMessage: ArrayList<ChatMessage> = ArrayList()
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    private val listChat = mutableListOf<ChatMessage>()
     companion object {
         private const val VIEW_TYPE_SEND = 1
         private const val VIEW_TYPE_RECEIVE = 2
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setData(list: List<ChatMessage>) {
+        listChat.clear()
+        listChat.addAll(list)
+        notifyDataSetChanged()
     }
 
     override fun getItemViewType(position: Int): Int {

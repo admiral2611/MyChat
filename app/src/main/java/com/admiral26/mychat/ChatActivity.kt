@@ -1,5 +1,6 @@
 package com.admiral26.mychat
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
@@ -73,6 +74,7 @@ class ChatActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private val eventListener =
         EventListener { value: QuerySnapshot?, error: FirebaseFirestoreException? ->
             if (error != null) {
@@ -98,7 +100,8 @@ class ChatActivity : AppCompatActivity() {
                 if (count == 0) {
                     multiAdapter.notifyDataSetChanged()
                 } else {
-                    multiAdapter.notifyItemRangeInserted(listMessage.size, listMessage.size)
+                    multiAdapter.setData(listMessage)
+                    //multiAdapter.notifyItemRangeInserted(listMessage.size, listMessage.size)
                     binding.recyclerView.smoothScrollToPosition(listMessage.size - 1)
                 }
                 binding.recyclerView.visibility = VISIBLE
@@ -111,6 +114,7 @@ class ChatActivity : AppCompatActivity() {
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private fun setListeners() {
         val inputMessage: TextInputLayout = findViewById(R.id.textInputLayout)
         val customEndIcon: Drawable = resources.getDrawable(R.drawable.ic_send, null)
