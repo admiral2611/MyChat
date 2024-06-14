@@ -18,6 +18,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.admiral26.mychat.R
 import com.admiral26.mychat.databinding.ActivitySignUpBinding
 import com.admiral26.mychat.util.Constants
 import com.admiral26.mychat.util.Constants.KEY_EMAIL
@@ -39,6 +40,7 @@ class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        binding.imageAvatar.setImageResource(R.drawable.empty_image)
         preferenceManager = PreferenceManager(applicationContext)
         setListeners()
 

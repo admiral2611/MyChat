@@ -7,9 +7,11 @@ import android.graphics.drawable.Drawable
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.util.Base64
+import android.util.Log
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.admiral26.mychat.adapter.ChatAdapter
 import com.admiral26.mychat.adapter.MultiAdapter
 import com.admiral26.mychat.databinding.ActivityChatBinding
@@ -47,12 +49,14 @@ class ChatActivity : AppCompatActivity() {
     private fun init() {
         preferenceManager = PreferenceManager(this)
         listMessage = ArrayList()
+        Log.d("senderId", "init: ${preferenceManager!!.getString(Constants.KEY_USER_ID)}")
         multiAdapter = MultiAdapter(
             preferenceManager!!.getString(Constants.KEY_USER_ID),
             receiverUser?.image?.let { getBitmapFromEncodedString(it) },
             listMessage
         )
         binding.recyclerView.setAdapter(multiAdapter)
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
         firestore = FirebaseFirestore.getInstance()
     }
 
@@ -98,8 +102,10 @@ class ChatActivity : AppCompatActivity() {
                     o1.dataObject?.compareTo(o2.dataObject)!!
                 })
                 if (count == 0) {
+                    Log.d("noti", "notifyIf: ")
                     multiAdapter.notifyDataSetChanged()
                 } else {
+                    Log.d("noti", "notifyElse: ")
                     multiAdapter.setData(listMessage)
                     //multiAdapter.notifyItemRangeInserted(listMessage.size, listMessage.size)
                     binding.recyclerView.smoothScrollToPosition(listMessage.size - 1)

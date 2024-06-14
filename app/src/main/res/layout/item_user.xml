@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/_16ssp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/roundedImageView"
         app:layout_constraintTop_toTopOf="@+id/roundedImageView" />
@@ -26,6 +27,7 @@
     <TextView
         android:id="@+id/tv_email"
         android:layout_width="wrap_content"
+        android:textColor="@color/white"
         android:layout_height="wrap_content"
         android:textSize="@dimen/_16ssp"
         android:textStyle="bold"

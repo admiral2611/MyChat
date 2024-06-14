@@ -30,7 +30,6 @@
            android:id="@+id/img_layout"
            android:layout_width="wrap_content"
            android:layout_gravity="center"
-           android:background="#B88E8E"
            android:layout_height="wrap_content">
            <com.makeramen.roundedimageview.RoundedImageView
                android:id="@+id/image_avatar"
